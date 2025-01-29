@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes rainbow {
+            0% { background-position: 0%; }
+            100% { background-position: 200%; }
+        }
+        @keyframes smoothGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.6); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.8); }
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background: url('IMG_7152 (1).jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .container {
+            padding: 30px;
+            max-width: 700px;
+            margin: auto;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            background-image: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+            background-size: 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 7s linear infinite;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+            filter: brightness(1.2);
+        }
+        .info {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #b0c4de;
+        }
+        .search-bar {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            width: 60%;
+            padding: 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        button {
+            padding: 12px 24px;
+            margin-left: 8px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            align-items: center;
+        }
+        .icon-grid a {
+            width: 85px;
+            height: 85px;
+            display: inline-block;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            animation: smoothGlow 4s infinite;
+            transition: transform 0.3s;
+        }
+
+        .icon-grid a:hover {
+            transform: scale(1.1);
+        }
+        .icon-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Good morning, Teto</h1>
+        <p class="info date-time"></p>
+        <p class="info weather"></p>
+
+        <div class="search-bar">
+            <form action="https://www.google.com/search" method="get">
+                <input type="text" name="q" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="icon-grid">
+            <a href="https://mail.google.com" target="_blank">
+                <img src="pngwing.com.png" alt="Gmail">
+            </a>
+            <a href="https://drive.google.com" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Google_Drive_logo.png/512px-Google_Drive_logo.png" alt="Google Drive">
+            </a>
+            <a href="https://chat.openai.com" target="_blank">
+                <img src="visualhunter-a1bf6d3746.png" alt="ChatGPT">
+            </a>
+            <a href="https://claude.ai" target="_blank">
+                <img src="66af99839e55f1ee29f117ac.png" alt="Claude">
+            </a>
+            <a href="https://www.ultimate-guitar.com/" target="_blank">
+                <img src="200h.png" alt="Ultimate Guitar">
+            </a>
+            <a href="https://gitlab.com" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/GitLab_logo.svg/512px-GitLab_logo.svg.png" alt="GitLab">
+            </a>
+            <a href="https://maps.google.com" target="_blank">
+                <img src="pngwing.com (4).png" alt="Google Maps">
+            </a>
+            <a href="https://calendar.google.com" target="_blank">
+                <img src="pngwing.com (3).png" alt="Google Calendar">
+            </a>
+        </div>
+        <div class="footer-text">
+        © 2025 Teto's Personal Page |	
+        <a href="#">Privacy Policy 
+        </a>
+        |
+        <a href="#">Terms & Conditions 
+        </a>
+        </div>
+
+
+    </div>
+    
+    <script>
+        function updateDateTime() {
+            const dateTimeElement = document.querySelector('.info.date-time');
+            const now = new Date();
+            const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            
+            const formattedDate = now.toLocaleDateString('en-US', optionsDate);
+            const formattedTime = now.toLocaleTimeString('en-US', optionsTime);
+            
+            dateTimeElement.textContent = `${formattedDate} — ${formattedTime}`;
+        }
+
+        setInterval(updateDateTime, 1000);
+        window.onload = updateDateTime;
+
+        async function updateWeather() {
+            const weatherElement = document.querySelector('.info.weather');
+            const apiKey = '8ea6648a6ed0cab9a405dfeae077f289';
+            const location = 'Saronno,IT';
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                if (data.weather && data.main) {
+                    const temperature = Math.round(data.main.temp);
+                    const condition = data.weather[0].description;
+                    weatherElement.textContent = `${temperature}°C • ${condition.charAt(0).toUpperCase() + condition.slice(1)} — Saronno`;
+                } else {
+                    weatherElement.textContent = 'Weather data unavailable';
+                }
+            } catch (error) {
+                weatherElement.textContent = 'Error fetching weather data';
+            }
+        }
+
+        setInterval(updateWeather, 600000);  // Update every 10 minutes
+        window.onload = updateWeather;
+    </script>
+<style>
+.footer-text {
+    text-align: center; 
+    font-size: 14px;
+    color: white;
+    margin-top: 30px;  
+    width: 100%;  
+    display: block; 
+    opacity: 0.8;
+}
+.footer-text a {
+    color: white;
+    text-decoration: none;
+}
+.footer-text a:hover {
+    text-decoration: underline;
+}
+.footer-text a {
+    color: #5DADE2; 
+    text-decoration: underline; 
+    font-weight: bold;
+}
+
+.footer-text a:hover {
+    color: #3498db; 
+}
+
+        body {
+            background-image: url('montagnebackground.jpg');
+            background-size: cover;
+        }
+    </style>
+
+</body>
+</html>
